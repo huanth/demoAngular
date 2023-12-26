@@ -6,11 +6,13 @@ import { SoftPipe } from './soft.pipe';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DemoComponent } from './demo/demo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SoftPipe
+    SoftPipe,
+    DemoComponent
   ],
   imports: [
     BrowserModule,
