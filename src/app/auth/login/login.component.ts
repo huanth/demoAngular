@@ -13,8 +13,8 @@ username: string = '';
   constructor(private authService: AuthService, private router: Router) {}
 
   login(username: string, password: string): void {
-    this.authService.login(username, password).subscribe(success => {
-      if (success) {
+    this.authService.login(username, password).subscribe(response => {
+      if (response.data.length > 0) {
         this.router.navigate(['/']);
       }
     });

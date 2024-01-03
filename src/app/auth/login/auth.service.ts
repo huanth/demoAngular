@@ -7,22 +7,20 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private isLoggedIn = false;
 
   constructor(private http: HttpClient) {}
 
-  login(username: string, password: string): Observable<boolean> {
+  login(username: string, password: string): Observable<any> {
     // Replace with the actual API endpoint
-    const url = 'http://localhost:1337/api/members';
+    const url = 'http://localhost:1337/api/';
 
-    return this.http.post<boolean>(url, { username, password }).pipe(
-      tap(success => {
-        this.isLoggedIn = success;
+    return this.http.get(url + 'members?filters[username][$in]=' + username).pipe(
+      tap((response: any) => {
+        console.log(response);
+        if (response.data.length > 0) {
+          localStorage.setItem('key_login', response.data[0].attributes.key);
+        }
       })
     );
-  }
-
-  getLoginStatus(): boolean {
-    return this.isLoggedIn;
   }
 }
