@@ -10,6 +10,7 @@ import { CartComponent } from './cart/cart.component';
 import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/login/login.component';
 import { NoRouterComponent } from './no-router/no-router.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NoRouterComponent } from './no-router/no-router.component';
     CartComponent,
     AuthComponent,
     LoginComponent,
-    NoRouterComponent
+    NoRouterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
