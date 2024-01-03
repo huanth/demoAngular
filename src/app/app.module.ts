@@ -2,17 +2,24 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
-import { SoftPipe } from './soft.pipe';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DemoComponent } from './demo/demo.component';
+import { SharedComponent } from './shared/shared.component';
+import { BooksComponent } from './books/books.component';
+import { CartComponent } from './cart/cart.component';
+import { AuthComponent } from './auth/auth.component';
+import { LoginComponent } from './auth/login/login.component';
+import { NoRouterComponent } from './no-router/no-router.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SoftPipe,
-    DemoComponent
+    SharedComponent,
+    BooksComponent,
+    CartComponent,
+    AuthComponent,
+    LoginComponent,
+    NoRouterComponent
   ],
   imports: [
     BrowserModule,
