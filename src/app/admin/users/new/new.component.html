@@ -1,1 +1,52 @@
-<p>new works!</p>
+<div class="container">
+    <h2 class="text-center mb-5">Add new user</h2>
+    <form (ngSubmit)="add_user(user.username, user.password, user.email, user.fullname, user.phone, user.address, user.role)" class="row g-3"> 
+        <div class="row col-md-6 text-center">
+            <div class="col mb-3">
+                <input type="text" class="form-control" name="username" placeholder="Username" [(ngModel)]="user.username" required />
+                <span class="text-validation-error"></span>
+            </div>
+        </div>
+
+        <div class="row col-md-6 text-center">
+            <div class="col mb-3">
+                <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="user.password" required />
+                <span class="text-validation-error"></span>
+            </div>
+        </div>
+
+        <div class="row col-md-6 text-center">
+            <div class="col mb-3">
+                <input type="email" class="form-control" name="email" placeholder="Email" [(ngModel)]="user.email" required />
+                <span class="text-validation-error"></span>
+            </div>
+        </div>
+        
+        <div class="row col-md-6 text-center">
+            <div class="col mb-3">
+                <input type="tel" class="form-control" name="phone" placeholder="Phone" [(ngModel)]="user.phone" required />
+                <span class="text-validation-error"></span>
+            </div>
+        </div>
+
+        <div class="row col-md-12 text-center">
+            <div class="col mb-3">
+                <input type="text" class="form-control" name="fullname" placeholder="Full name" [(ngModel)]="user.fullname" required />
+                <span class="text-validation-error"></span>
+            </div>
+        </div>
+
+        <div class="row col-md-12 text-center">
+            <div class="col mb-3">
+                <textarea class="form-control" name="address" placeholder="Address" [(ngModel)]="user.address"></textarea>
+            </div>
+        </div>
+
+        <input type="hidden" class="form-control" name="role" [(ngModel)]="user.role" />
+
+        <div class="col mb-3">
+            <button type="submit" class="btn btn-primary w-100">Add user</button>
+        </div>
+
+    </form>
+</div>
