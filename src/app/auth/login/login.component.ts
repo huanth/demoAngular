@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from './auth.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +16,9 @@ username: string = '';
     this.authService.login(username, password).subscribe(response => {
       if (response.data.length > 0) {
         this.router.navigate(['/']);
+      }
+      else {
+        alert('Invalid username or password');
       }
     });
   }
