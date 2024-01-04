@@ -12,6 +12,11 @@ import { LoginComponent } from './auth/login/login.component';
 import { NoRouterComponent } from './no-router/no-router.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminComponent } from './admin/admin.component';
+import { UsersComponent } from './admin/users/users.component';
+import { SettingsComponent } from './admin/settings/settings.component';
+import { NewComponent } from './admin/users/new/new.component';
+import { ListsComponent } from './admin/users/lists/lists.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,12 @@ import { HttpClientModule } from '@angular/common/http';
     AuthComponent,
     LoginComponent,
     NoRouterComponent,
-    HomeComponent
+    HomeComponent,
+    AdminComponent,
+    UsersComponent,
+    SettingsComponent,
+    NewComponent,
+    ListsComponent
   ],
   imports: [
     BrowserModule,
