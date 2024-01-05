@@ -17,6 +17,8 @@ import { UsersComponent } from './admin/users/users.component';
 import { SettingsComponent } from './admin/settings/settings.component';
 import { NewComponent } from './admin/users/new/new.component';
 import { ListsComponent } from './admin/users/lists/lists.component';
+import { DashbroadComponent } from './admin/dashbroad/dashbroad.component';
+import { EditComponent } from './admin/users/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { ListsComponent } from './admin/users/lists/lists.component';
     UsersComponent,
     SettingsComponent,
     NewComponent,
-    ListsComponent
+    ListsComponent,
+    DashbroadComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,

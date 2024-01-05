@@ -17,6 +17,9 @@ export class AuthService {
   private isAdmin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private name: BehaviorSubject<string> = new BehaviorSubject<string>('Guest');
 
+  private listUser: BehaviorSubject<any> = new BehaviorSubject<any>([]);
+  private user: BehaviorSubject<any> = new BehaviorSubject<any>({});
+
   constructor(http: HttpClient, router: Router) { 
     this.http = http;
     this.router = router;
@@ -56,6 +59,66 @@ export class AuthService {
     );
   }
 
+  getAllUser(): Observable<any> {
+    const url = 'http://localhost:1337/api/';
+
+    return this.http.get(url + 'members').pipe(
+      tap((response: any) => {
+        this.listUser.next(response.data);
+      })
+    );
+  }
+
+  getUser(id: string): Observable<any> {
+    const url = 'http://localhost:1337/api/';
+
+    return this.http.get(url + 'members/' + id).pipe(
+      tap((response: any) => {
+        this.user.next(response.data.attributes);
+      })
+    );
+  }
+
+  editUser(id: string, username: string, password: string, email: string, name: string, phone: string, address: string): Observable<any> {
+    const url = 'http://localhost:1337/api/';
+
+    return this.http.put(url + 'members/' + id, {
+      "data": {
+        username: username,
+        password: password,
+        email: email,
+        name: name,
+        phone: phone,
+        address: address,
+      }
+    });
+  }
+
+  createUser(username: string, password: string, email: string, name: string, phone: string, address: string, is_admin: boolean): Observable<any> {
+    const url = 'http://localhost:1337/api/';
+
+    return this.http.post(url + 'members', {
+      "data": {
+        username: username,
+        password: password,
+        email: email,
+        name: name,
+        phone: phone,
+        address: address,
+        is_admin: is_admin,
+        key_login:  Date.now().toString()
+      }
+    });
+  }
+
+
+
+  deleteUser(id: number): Observable<any> {
+    const url = 'http://localhost:1337/api/';
+
+    return this.http.delete(url + 'members/' + id);
+  }
+
   public logout(): void {
     localStorage.removeItem('key_login');
     localStorage.removeItem('is_admin');
@@ -78,6 +141,14 @@ export class AuthService {
 
   public nameObservable(): Observable<string> {
     return this.name.asObservable();
+  }
+
+  public listUserObservable(): Observable<any> {
+    return this.listUser.asObservable();
+  }
+
+  public userObservable(): Observable<any> {
+    return this.user.asObservable();
   }
 
 }

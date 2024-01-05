@@ -1,6 +1,6 @@
 <div class="container">
     <h2 class="text-center mb-5">Add new user</h2>
-    <form (ngSubmit)="add_user(user.username, user.password, user.email, user.name, user.phone, user.address, user.is_admin)" class="row g-3"> 
+    <form (ngSubmit)="edit_user(user.username, user.password, user.email, user.name, user.phone, user.address)" class="row g-3"> 
         <div class="row col-md-6">
             <div class="col mb-3">
                 <label for="username" class="form-label">Username</label>
@@ -12,7 +12,7 @@
         <div class="row col-md-6">
             <div class="col mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="user.password" required />
+                <input type="password" class="form-control" name="password" placeholder="*******" [(ngModel)]="user.password" required />
                 <span class="text-validation-error"></span>
             </div>
         </div>
@@ -52,7 +52,7 @@
         <input type="hidden" class="form-control" value="true" name="is_admin" [(ngModel)]="user.is_admin" />
 
         <div class="col mb-3 text-center">
-            <button type="submit" class="btn btn-primary w-25">Add user</button>
+            <button type="submit" class="btn btn-primary w-25">Edit user</button>
         </div>
 
         <a routerLink="/admin/users" class=" mt-2 mb-4 text-center">Back to list Users</a>
