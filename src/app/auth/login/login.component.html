@@ -3,7 +3,10 @@
   <div class="card login-form">
     <div class="card-body">
       <h5 class="card-title text-center">Login Form</h5>
-      <form (ngSubmit)="login(username, password)">
+      <form 
+        #loginForm="ngForm"
+        (submit)="onSubmit(loginForm)"
+      >
         <div class="mb-3">
           <label for="exampleInputUsername" class="form-label">Username</label>
           <input
@@ -11,9 +14,19 @@
             class="form-control"
             id="exampleInputUsername"
             aria-describedby="textlHelp"
-            [(ngModel)]="username"
+            minlength="3"
+            maxlength="20"
+            [pattern]="usernamePattern"
+            #username="ngModel"
+            [(ngModel)]="userLogin.username"
             name="username"
+            required
           />
+          <div *ngIf="username.errors" class="error_validate mt-1">
+            <span *ngIf="username.errors?.['minlength']">
+              Username must be at least 3 characters long.
+            </span>
+          </div> 
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Password</label>
@@ -21,11 +34,21 @@
             type="password"
             class="form-control"
             id="exampleInputPassword1"
-            [(ngModel)]="password"
+            minlength="8"
+            maxlength="32"
+            [pattern]="passwordPattern"
+            #password="ngModel"
+            [(ngModel)]="userLogin.password"
             name="password"
+            required
           />
+          <div *ngIf="password.errors" class="error_validate mt-1">
+            <span *ngIf="password.errors?.['minlength']">
+              Password must be at least 8 characters long.
+            </span>
+          </div> 
         </div>
-        <button type="submit" class="btn btn-primary w-100">Login</button>
+        <button type="submit" class="btn btn-primary w-100" [disabled]="!loginForm.valid">Login</button>
         <div class="sign-up mt-4">
           Don't have an account?
           <a routerLink="/contact-admin">Please contact admin</a>

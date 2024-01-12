@@ -29,11 +29,11 @@ export class AuthService {
     this.name.next(getName());
   }
 
+  public url: string = 'http://localhost:1337/api/';
+
   login(username: string, password: string): Observable<any> {
-    // Replace with the actual API endpoint
-    const url = 'http://localhost:1337/api/';
-    
-    return this.http.get(url + 'members?filters[username][$in]=' + username).pipe(
+    // Replace with the actual API endpoint 
+    return this.http.get(this.url + 'members?filters[username][$in]=' + username).pipe(
       tap((response: any) => {
         if (response.data.length > 0) {
           localStorage.setItem('key_login', response.data[0].attributes.key);
@@ -60,9 +60,7 @@ export class AuthService {
   }
 
   getAllUser(): Observable<any> {
-    const url = 'http://localhost:1337/api/';
-
-    return this.http.get(url + 'members').pipe(
+    return this.http.get(this.url + 'members').pipe(
       tap((response: any) => {
         this.listUser.next(response.data);
       })
@@ -70,9 +68,7 @@ export class AuthService {
   }
 
   getUser(id: string): Observable<any> {
-    const url = 'http://localhost:1337/api/';
-
-    return this.http.get(url + 'members/' + id).pipe(
+    return this.http.get(this.url + 'members/' + id).pipe(
       tap((response: any) => {
         this.user.next(response.data.attributes);
       })
@@ -80,9 +76,7 @@ export class AuthService {
   }
 
   editUser(id: string, username: string, password: string, email: string, name: string, phone: string, address: string): Observable<any> {
-    const url = 'http://localhost:1337/api/';
-
-    return this.http.put(url + 'members/' + id, {
+    return this.http.put(this.url + 'members/' + id, {
       "data": {
         username: username,
         password: password,
@@ -95,9 +89,7 @@ export class AuthService {
   }
 
   createUser(username: string, password: string, email: string, name: string, phone: string, address: string, is_admin: boolean): Observable<any> {
-    const url = 'http://localhost:1337/api/';
-
-    return this.http.post(url + 'members', {
+    return this.http.post(this.url + 'members', {
       "data": {
         username: username,
         password: password,
@@ -111,12 +103,8 @@ export class AuthService {
     });
   }
 
-
-
   deleteUser(id: number): Observable<any> {
-    const url = 'http://localhost:1337/api/';
-
-    return this.http.delete(url + 'members/' + id);
+    return this.http.delete(this.url + 'members/' + id);
   }
 
   public logout(): void {

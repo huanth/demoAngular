@@ -17,8 +17,8 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'admin', component: AdminComponent, canActivate: [authGuard],
       children: [
-        { path: '', redirectTo: 'dashbrod', pathMatch: 'full'},
-        { path: 'dashbrod', component: DashbroadComponent },
+        { path: '', redirectTo: 'dashbroad', pathMatch: 'full'},
+        { path: 'dashbroad', component: DashbroadComponent },
         { path: 'users', component: UsersComponent,
           children: [
             { path: '', redirectTo: 'lists', pathMatch: 'full'},
