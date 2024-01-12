@@ -21,4 +21,8 @@ export class BooksComponent {
     });
   }
 
+  addToCart(book: any): void {
+    console.log(book);
+  }
+
 }
