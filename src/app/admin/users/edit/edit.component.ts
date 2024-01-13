@@ -37,8 +37,7 @@ export class EditComponent {
     this.route.params.subscribe(params => {
       
       this.id = params['id'];
-      console.log('ID from route:', this.id);
-
+      
       this.get_user();
     });
   }

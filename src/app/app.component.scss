@@ -1,0 +1,35 @@
+.minicart {
+    display: none;
+}
+
+.icon-minicart {
+    position: relative;
+    cursor: pointer;
+
+}
+
+.icon-minicart.show~.minicart {
+    display: block;
+    position: absolute;
+    list-style: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 300px;
+    right: 10%;
+    left: auto;
+    top: 100%;
+    z-index: 999;
+}
+
+.item-cart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quantity input {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}

@@ -27,9 +27,26 @@ export class AppComponent {
     this.authService.nameObservable().subscribe((name) => {
       this.name = name;
     });
+
+    this.documentClick();
   }
 
   logout() {
     this.authService.logout();
+  }
+
+  show_minicart() {
+    var minicart = document.getElementById("minicart");
+    minicart?.classList.toggle("show");
+  }
+
+  // Check document click
+  documentClick() {
+    document.addEventListener('click', function(event) {
+      var minicart = document.getElementById("minicart");
+      if (event.target != minicart) {
+        minicart?.classList.remove("show");
+      }
+    });
   }
 }

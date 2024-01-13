@@ -18,6 +18,8 @@ import { NewComponent } from './admin/users/new/new.component';
 import { ListsComponent } from './admin/users/lists/lists.component';
 import { DashbroadComponent } from './admin/dashbroad/dashbroad.component';
 import { EditComponent } from './admin/users/edit/edit.component';
+import { DetailComponent } from './books/detail/detail.component';
+import { ListComponent } from './books/list/list.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { EditComponent } from './admin/users/edit/edit.component';
     NewComponent,
     ListsComponent,
     DashbroadComponent,
-    EditComponent
+    EditComponent,
+    DetailComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,

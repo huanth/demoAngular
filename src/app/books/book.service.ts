@@ -13,6 +13,7 @@ export class BookService {
   private router: Router;
 
   private listBooks: BehaviorSubject<any> = new BehaviorSubject<any>([]);
+  private book: BehaviorSubject<any> = new BehaviorSubject<any>({});
 
   constructor(http: HttpClient, router: Router) { 
     this.http = http;
@@ -29,8 +30,16 @@ export class BookService {
     );
   }
 
+  getBook(id: string): Observable<any> {
+    return this.http.get(this.url + 'books/' + id + '?populate=*');
+  }
+
   public getBooksObservable(): Observable<any> {
     return this.listBooks.asObservable();
+  }
+
+  public getBookObservable(): Observable<any> {
+    return this.book.asObservable();
   }
 
 }
