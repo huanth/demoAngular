@@ -47,12 +47,10 @@ export class NewComponent {
     this.addressValidator(address);
 
     if (this.validateForm) {
-      console.log('Form is not valid');
       return;
     }
     else {
       this.authService.createUser(username, password, email, name, phone, address, is_admin).subscribe(response => {
-        console.log(response);
         this.router.navigate(['/admin/users/lists']);
       });
     }

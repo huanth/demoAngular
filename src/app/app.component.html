@@ -22,27 +22,32 @@
         </li>
       </ul>
       <form class="d-flex">
-          <span id="minicart" class="nav-link icon-minicart" (click)="show_minicart()">Giỏ hàng(0)</span>
-          <div class="minicart">
-            <li class="item-cart">
-              <div class="product-img">
-                <img src="https://via.placeholder.com/70x70" alt="">
+          <span id="minicart" class="nav-link icon-minicart" (click)="show_minicart()">Giỏ hàng({{ totalProduct }})</span>
+          <div class="minicart" id="minicart_content">
+            <li *ngFor="let item of allCart" class="product-item">
+              <div class="product-img product_val">
+                <img src="https://via.placeholder.com/100x100" alt="">
               </div>
-              <div class="product-info">
-                <a href="#">Product Name</a>
-                <div class="quantity">
+              <div class="product-info product_val">
+                <a href="#">{{ item.attributes.product.data.attributes.name }}</a>
+                
+                <div class="quantity product_val">
                   <span class="minus">-</span>
-                  <input type="number" id="qty" name="qty" value="1" min="1">
+                  <input type="number" id="qty" name="qty" value="{{ item.attributes.qty }}" min="1">
                   <span class="plus">+</span>
                 </div>
-                <span class="price">$99.00</span>
+                <span class="price">{{ (item.attributes.qty * item.attributes.price) | currency:'VND' }}</span>
               </div>
               <div class="product-remove">
                 <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
               </div>
             </li>
-          </div>
 
+            <div class="total-price">
+              <span>Tổng tiền: {{ totalCartPrice | currency:'VND' }}</span>
+            </div>
+          </div>
+          
           <span class="nav-link active">Xin chào, {{ name }}</span>
           <a *ngIf="!isLogin" class="nav-link" routerLink="/login">
             Đăng nhập

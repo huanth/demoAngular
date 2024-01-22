@@ -9,7 +9,7 @@
                 <p class="card-text">{{book.attributes.description}}</p>
             </div>
             <span class="price">{{book.attributes.price | currency:'VND'}}</span><br>
-            <button (click)="addToCart(book.id)" class="btn btn-primary mt-3">Add to cart</button>
+            <button (click)="addToCart(book.id, book.attributes.price)" class="btn btn-primary mt-3">Add to cart</button>
         </div>
       </div>
     </div>

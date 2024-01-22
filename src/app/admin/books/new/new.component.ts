@@ -56,12 +56,10 @@ export class NewComponent {
     this.authorValidator(author);
     
     if (this.validateForm) {
-      console.log('Form is not valid');
       return;
     }
     else {
       this.bookService.createBook(name, sku, price, description, category, year, author).subscribe(response => {
-        console.log(response);
         this.router.navigate(['/admin/books/list']);
       });
     }
