@@ -16,9 +16,10 @@ export class AuthService {
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private isAdmin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private name: BehaviorSubject<string> = new BehaviorSubject<string>('Guest');
+  private user: BehaviorSubject<any> = new BehaviorSubject<any>({});
 
   private listUser: BehaviorSubject<any> = new BehaviorSubject<any>([]);
-  private user: BehaviorSubject<any> = new BehaviorSubject<any>({});
+  private currentUser: BehaviorSubject<any> = new BehaviorSubject<any>({});
 
   constructor(http: HttpClient, router: Router) { 
     this.http = http;
@@ -55,6 +56,14 @@ export class AuthService {
           this.isAdmin.next(false);
           this.name.next('Guest');
         }
+      })
+    );
+  }
+
+  getCurrentUser(): Observable<any> {
+    return this.http.get(this.url + 'members?filters[key][$in]=' + localStorage.getItem('key_login')).pipe(
+      tap((response: any) => {
+        this.currentUser.next(response.data[0]);
       })
     );
   }
@@ -137,6 +146,10 @@ export class AuthService {
 
   public userObservable(): Observable<any> {
     return this.user.asObservable();
+  }
+
+  public currentUserObservable(): Observable<any> {
+    return this.currentUser.asObservable();
   }
 
 }

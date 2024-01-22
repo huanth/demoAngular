@@ -14,12 +14,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
 import { UsersComponent } from './admin/users/users.component';
 import { SettingsComponent } from './admin/settings/settings.component';
-import { NewComponent } from './admin/users/new/new.component';
-import { ListsComponent } from './admin/users/lists/lists.component';
+import { ListsComponent as ListUserAdmin  } from './admin/users/lists/lists.component';
 import { DashbroadComponent } from './admin/dashbroad/dashbroad.component';
-import { EditComponent } from './admin/users/edit/edit.component';
-import { DetailComponent } from './books/detail/detail.component';
-import { ListComponent } from './books/list/list.component';
+import { EditComponent as EditUser } from './admin/users/edit/edit.component';
+import { DetailComponent as BookDetail } from './books/detail/detail.component';
+import { NewComponent as NewUser } from './admin/users/new/new.component';
+import { NewComponent as NewBookAdmin } from './admin/books/new/new.component';
+import { ListsComponent as ListBookAdmin } from './admin/books/lists/lists.component';
+import { EditComponent as EditBooksAdmin } from './admin/books/edit/edit.component';
+import { BooksComponent as BooksAdmin } from './admin/books/books.component';
+import { ListComponent as  BooksListComponent } from './books/list/list.component';
+
 
 @NgModule({
   declarations: [
@@ -34,12 +39,16 @@ import { ListComponent } from './books/list/list.component';
     AdminComponent,
     UsersComponent,
     SettingsComponent,
-    NewComponent,
-    ListsComponent,
+    NewUser,
+    ListUserAdmin,
     DashbroadComponent,
-    EditComponent,
-    DetailComponent,
-    ListComponent
+    EditUser,
+    BookDetail,
+    BooksListComponent,
+    NewBookAdmin,
+    ListBookAdmin,
+    EditBooksAdmin,
+    BooksAdmin
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,61 @@
+<div class="container">
+    <h2 class="text-center mb-5">Add new book</h2>
+    <form (ngSubmit)="add_book(book.name, book.sku, book.price, book.description, book.category, book.year, book.author)" class="row g-3"> 
+        <div class="row col-md-6">
+            <div class="col mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" name="name" placeholder="Name" [(ngModel)]="book.name" required />
+                <span class="text-validation-error"></span>
+            </div>
+        </div>
+
+        <div class="row col-md-6">
+            <div class="col mb-3">
+                <label for="sku" class="form-label">SKU</label>
+                <input type="text" class="form-control" name="sku" placeholder="SKU" [(ngModel)]="book.sku" required />
+                <span class="text-validation-error"></span>
+            </div>
+        </div>
+
+        <div class="row col-md-6">
+            <div class="col mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="text" class="form-control" name="price" placeholder="Price" [(ngModel)]="book.price" required />
+                <span class="text-validation-error"></span>
+            </div>
+        </div>
+
+        <div class="row col-md-6">
+            <div class="col mb-3">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" class="form-control" name="description" placeholder="Description" [(ngModel)]="book.description" required />
+                <span class="text-validation-error"></span>
+            </div>
+        </div>
+
+        <div class="row col-md-6">
+            <div class="col mb-3">
+                <label for="category" class="form-label">Category</label>
+                <input type="text" class="form-control" name="category" placeholder="Category" [(ngModel)]="book.category" required />
+                <span class="text-validation-error"></span>
+            </div>
+        </div>
+
+        <div class="row col-md-6">
+            <div class="col mb-3">
+                <label for="year" class="form-label">Year</label>
+                <input type="text" class="form-control" name="year" placeholder="Year" [(ngModel)]="book.year" required />
+                <span class="text-validation-error"></span>
+            </div>
+        </div>
+
+        <input type="hidden" class="form-control" value="1" name="author" [(ngModel)]="book.author" />
+
+        <div class="col mb-3 text-center">
+            <button type="submit" class="btn btn-primary w-25">Add book</button>
+        </div>
+
+        <a routerLink="/admin/users" class=" mt-2 mb-4 text-center">Back to list Books</a>
+
+    </form>
+</div>

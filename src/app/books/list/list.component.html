@@ -3,7 +3,7 @@
     <div *ngFor="let book of books" class="col-sm-4">
       <div class="card">
         <div class="card-body">
-            <img src="http://localhost:1337{{book.attributes.image.data.attributes.url}}" class="card-img-top" alt="...">
+            <img src="http://localhost:1337{{book.attributes.image.data?.attributes.url}}" class="card-img-top" alt="...">
             <a routerLink="/book/{{book.id}}" class="link"><h5 class="card-title">{{book.attributes.name}}</h5></a>
             <div class="des">
                 <p class="card-text">{{book.attributes.description}}</p>

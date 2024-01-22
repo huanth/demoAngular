@@ -34,6 +34,24 @@ export class BookService {
     return this.http.get(this.url + 'books/' + id + '?populate=*');
   }
 
+  deleteBook(id: number): Observable<any> {
+    return this.http.delete(this.url + 'books/' + id);
+  }
+
+  createBook(name: string, sku: string, price: string, description: string, category: string, year: string, author: string): Observable<any> {
+    return this.http.post(this.url + 'books', {
+      "data": {
+        name: name,
+        sku: sku,
+        price: price,
+        description: description,
+        category: category,
+        year: year,
+        author: author
+      }
+    });
+  }
+
   public getBooksObservable(): Observable<any> {
     return this.listBooks.asObservable();
   }
